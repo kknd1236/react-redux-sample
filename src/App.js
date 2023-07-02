@@ -1,5 +1,5 @@
 import react, { useState } from 'react';
-import { createStore } from 'redux';
+import { legacy_createStore as createStore } from 'redux';
 import { Provider, useSelector, useDispatch, connect } from 'react-redux';
 import './App.css';
 
