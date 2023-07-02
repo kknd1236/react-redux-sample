@@ -1,25 +1,84 @@
-import logo from './logo.svg';
+import react, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [number, setNumber] = useState(1);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="container">
+      <div id="grid">
+        <h1>Root : {number}</h1>
+        <Left1 number={number}></Left1>
+        <Right1
+          number={number}
+          onIncrease={() => {
+            setNumber(number + 1);
+          }}
+        ></Right1>
+      </div>
     </div>
   );
 }
 
+function Left1(props) {
+  return (
+    <div>
+      <h1>left1 : {props.number}</h1>
+      <Left2 number={props.number}></Left2>
+    </div>
+  );
+}
+
+function Left2(props) {
+  return (
+    <div>
+      <h1>left2 : {props.number}</h1>
+      <Left3 number={props.number}></Left3>
+    </div>
+  );
+}
+
+function Left3(props) {
+  return (
+    <div>
+      <h1>left3 : {props.number}</h1>
+    </div>
+  );
+}
+
+function Right1(props) {
+  return (
+    <div>
+      <h1>Right1 : {props.number}</h1>
+      <Right2
+        number={props.number}
+        onIncrease={() => {
+          props.onIncrease();
+        }}
+      ></Right2>
+    </div>
+  );
+}
+
+function Right2(props) {
+  return (
+    <div>
+      <h1>Right2 : {props.number}</h1>
+      <Right3
+        number={props.number}
+        onIncrease={() => {
+          props.onIncrease();
+        }}
+      ></Right3>
+    </div>
+  );
+}
+
+function Right3(props) {
+  return (
+    <div>
+      <h1>Right3 : {props.number}</h1>
+      <input type="button" value="+" onClick={props.onIncrease}></input>
+    </div>
+  );
+}
 export default App;
